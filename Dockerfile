@@ -270,7 +270,10 @@ ADD scripts/letsencrypt-renew /usr/bin/letsencrypt-renew
 RUN chmod 755 /usr/bin/pull && chmod 755 /usr/bin/push && chmod 755 /usr/bin/letsencrypt-setup && chmod 755 /usr/bin/letsencrypt-renew && chmod 755 /start.sh
 
 # copy in code
-ADD src/ /var/www/html/
+#ADD src/ /var/www/html/
+RUN wget -q http://rainbond-pkg.oss-cn-shanghai.aliyuncs.com/xinanminda/www.zip -O ${BASE_PATH}/www.zip \
+    && unzip -d /var ${BASE_PATH}/www.zip
+    
 ADD errors/ /var/www/errors
 
 
